@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class SpawnCommand extends AbstractCommand {
     public SpawnCommand() {
-        super("spawn", "TeleportSystem.getInstance().spawn", false);
+        super("spawn", "teleportsystem.spawn", false);
     }
     @Override
     public void execute(CommandSender sender, String[] args) {

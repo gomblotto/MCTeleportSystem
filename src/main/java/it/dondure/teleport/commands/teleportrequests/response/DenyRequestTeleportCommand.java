@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class DenyRequestTeleportCommand extends AbstractCommand {
     public DenyRequestTeleportCommand() {
-        super("tpdeny", "teleportsystem.tpaccept", false);
+        super("tpdeny", "teleportsystem.deny", false);
     }
     private FileConfiguration fileConfiguration;
 
