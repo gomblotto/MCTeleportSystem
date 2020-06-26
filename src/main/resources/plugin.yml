@@ -1,0 +1,41 @@
+name: TeleportSystem
+main: it.dondure.TeleportSystem
+version: 1.0.0
+commands:
+  tsy:
+    description: Main command of TeleportSystem
+    usage: /<command>
+    aliases: [teleportsystem, tsy]
+  setspawn:
+    description: Set a spawn
+    usage: /<command>
+  spawn:
+    description: Teleport to spawn
+    usage: /<command>
+  warp:
+    description: Get a list of warp
+    usage: /<command>
+  setwarp:
+    description: Set a warp
+    usage: /<command> <warp>
+  delwarp:
+    description: Delete a warp
+    usage: /<command> <warp>
+  tpa:
+    description: Send a tpa request
+    usage: /<command> [player]
+  tpahere:
+    description: Send a tpahere request
+    usage: /<command> [player]
+  tpaccept:
+    description: Accept a tp request
+    usage: /<command>
+  tpdeny:
+    description: Decline a tp request
+    usage: /<command>
+  tp:
+    description: Teleport to another player
+    usage: /<command> [player]
+  tphere:
+    description: Teleport to you a player
+    usage: /<command> [player]
