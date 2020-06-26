@@ -7,14 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ModuleLoader {
-    private final List<ModuleService> moduleServiceList;
-    private final TeleportModule teleportModule;
-    private final WarpModule warpModule;
-    private final SpawnModule spawnModule;
-    private final HomeModule homeModule;
+    private List<ModuleService> moduleServiceList;
+    private TeleportModule teleportModule;
+    private WarpModule warpModule;
+    private SpawnModule spawnModule;
+    private HomeModule homeModule;
 
     public ModuleLoader() {
-        this.moduleServiceList = new ArrayList<ModuleService>();
+        this.moduleServiceList = new ArrayList<>();
         this.teleportModule = new TeleportModule();
         this.warpModule = new WarpModule();
         this.spawnModule = new SpawnModule();
@@ -26,7 +26,7 @@ public class ModuleLoader {
         this.moduleServiceList.forEach(ModuleService::init);
     }
 
-    private void addModule(final ModuleService... services) {
+    private void addModule(ModuleService... services) {
         this.moduleServiceList.addAll(Arrays.asList(services));
     }
 

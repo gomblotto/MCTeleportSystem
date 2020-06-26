@@ -5,8 +5,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class SpawnUtils {
-    public static void teleportPlayer(final Player player) {
-        final Location spawn = TeleportSystem.getInstance().getModuleLoader().getSpawnModule().getSpawnManager().getSpawn();
+    public static void teleportPlayer(Player player) {
+        Location spawn = TeleportSystem.getInstance().getModuleLoader().getSpawnModule().getSpawnManager().getSpawn();
         player.teleport(spawn);
     }
 }

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigManager {
-    private final List<ConfigService> configServices;
-    private final WarpConfig warpConfig;
-    private final SpawnConfig spawnConfig;
-    private final MessagesConfig messagesConfig;
-    private final HomeSQL homeSQL;
+    private List<ConfigService> configServices;
+    private WarpConfig warpConfig;
+    private SpawnConfig spawnConfig;
+    private MessagesConfig messagesConfig;
+    private HomeSQL homeSQL;
 
     public ConfigManager() {
         this.configServices = new ArrayList<ConfigService>();

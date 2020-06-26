@@ -11,32 +11,32 @@ public class SpawnLocationBuilder {
     private float pitch;
     private World world;
 
-    public SpawnLocationBuilder setWorld(final World world) {
+    public SpawnLocationBuilder setWorld(World world) {
         this.world = world;
         return this;
     }
 
-    public SpawnLocationBuilder setX(final double x) {
+    public SpawnLocationBuilder setX(double x) {
         this.x = x;
         return this;
     }
 
-    public SpawnLocationBuilder setY(final double y) {
+    public SpawnLocationBuilder setY(double y) {
         this.y = y;
         return this;
     }
 
-    public SpawnLocationBuilder setZ(final double z) {
+    public SpawnLocationBuilder setZ(double z) {
         this.z = z;
         return this;
     }
 
-    public SpawnLocationBuilder setYaw(final float yaw) {
+    public SpawnLocationBuilder setYaw(float yaw) {
         this.yaw = yaw;
         return this;
     }
 
-    public SpawnLocationBuilder setPitch(final float pitch) {
+    public SpawnLocationBuilder setPitch(float pitch) {
         this.pitch = pitch;
         return this;
     }

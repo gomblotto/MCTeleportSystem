@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class QuitEvent implements Listener {
     @EventHandler
-    public void onQuit(final PlayerQuitEvent e) {
+    public void onQuit(PlayerQuitEvent e) {
         TeleportSystem.getInstance().getRequestManager().removeTotally(e.getPlayer());
     }
 }

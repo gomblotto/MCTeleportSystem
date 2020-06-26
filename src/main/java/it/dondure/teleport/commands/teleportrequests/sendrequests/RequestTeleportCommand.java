@@ -24,13 +24,13 @@ public class RequestTeleportCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player player = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player player = (Player) sender;
         if (args.length == 0) {
             player.sendMessage(MessageUtils.color(this.messagesConfig.getString("type_name")));
             return;
         }
-        final Player target = Bukkit.getPlayer(args[0]);
+        Player target = Bukkit.getPlayer(args[0]);
         new BukkitRunnable() {
             public void run() {
                 if (PlayerUtils.isOnline(target)) {
@@ -39,10 +39,10 @@ public class RequestTeleportCommand extends AbstractCommand {
                     MessageUtils.sendMultipleLine(target, player.getName(), RequestTeleportCommand.this.messagesConfig.getStringList("tpa"));
                     player.sendMessage(MessageUtils.color(RequestTeleportCommand.this.messagesConfig.getString("requesttp")));
                 } else {
-                    player.sendMessage((String) Objects.requireNonNull(MessageUtils.color(RequestTeleportCommand.this.messagesConfig.getString("online"))));
+                    player.sendMessage(Objects.requireNonNull(MessageUtils.color(RequestTeleportCommand.this.messagesConfig.getString("online"))));
                 }
             }
-        }.runTaskAsynchronously((Plugin) TeleportSystem.getInstance());
+        }.runTaskAsynchronously(TeleportSystem.getInstance());
     }
 
     @Override

@@ -6,8 +6,8 @@ import org.bukkit.Location;
 import java.util.Objects;
 
 public class Home {
-    private final String owner;
-    private final Location home;
+    private String owner;
+    private Location home;
 
     @Override
     public String toString() {
@@ -18,7 +18,7 @@ public class Home {
         Objects.requireNonNull(Bukkit.getPlayer(this.owner)).teleport(this.home);
     }
 
-    public Home(final String owner, final Location home) {
+    public Home(String owner, Location home) {
         this.owner = owner;
         this.home = home;
     }

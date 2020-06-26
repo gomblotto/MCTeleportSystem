@@ -22,14 +22,14 @@ public class WarpCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player p = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player p = (Player) sender;
         if (args.length == 0) {
             WarpUtils.sendWarpMessage(MessageUtils.color(this.messageConfig.getString("no_perm_warp_view")), MessageUtils.color(this.messageConfig.getString("no_warps")), MessageUtils.color(this.messageConfig.getString("warp_list")), TeleportSystem.getInstance().getWarpManager().getWarps(), p);
             return;
         }
         if (p.hasPermission("teleportsystem.warp." + args[0].toLowerCase()) || p.hasPermission("teleportsystem.warp.*")) {
-            final Warp warp = WarpUtils.getWarpFromName(TeleportSystem.getInstance().getWarpManager().getWarps(), args[0]);
+            Warp warp = WarpUtils.getWarpFromName(TeleportSystem.getInstance().getWarpManager().getWarps(), args[0]);
             if (warp != null) {
                 warp.teleportPlayer(p);
                 p.sendMessage(MessageUtils.color(Objects.requireNonNull(this.messageConfig.getString("warping")).replace("%name%", warp.getName())));
@@ -43,7 +43,7 @@ public class WarpCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
         this.messageConfig = TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration();
     }
 }

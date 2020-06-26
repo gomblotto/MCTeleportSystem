@@ -17,7 +17,7 @@ public class SpawnManager {
         return this.spawn;
     }
 
-    public void setSpawn(final Location spawn) {
+    public void setSpawn(Location spawn) {
         this.spawn = spawn;
     }
 }

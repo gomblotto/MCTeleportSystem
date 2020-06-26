@@ -15,8 +15,8 @@ public class SetSpawnCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player p = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player p = (Player) sender;
         TeleportSystem.getInstance().getConfigManager().getSpawnConfig().setSpawn(p.getWorld().getName(), p.getLocation().getBlockX(), p.getLocation().getBlockY(), p.getLocation().getBlockZ(), p.getLocation().getYaw(), p.getLocation().getPitch());
         TeleportSystem.getInstance().getModuleLoader().getSpawnModule().getSpawnManager().load();
         p.sendMessage(MessageUtils.color(TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration().getString("set_spawn")));
@@ -24,6 +24,6 @@ public class SetSpawnCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
     }
 }

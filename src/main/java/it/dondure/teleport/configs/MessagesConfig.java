@@ -29,7 +29,7 @@ public class MessagesConfig implements ConfigService {
 
     @Override
     public void load() {
-        this.yamlConfiguration = (FileConfiguration) YamlConfiguration.loadConfiguration(this.file);
+        this.yamlConfiguration = YamlConfiguration.loadConfiguration(this.file);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MessagesConfig implements ConfigService {
         }
     }
 
-    public void create(final boolean saveResource) {
+    public void create(boolean saveResource) {
         if (!this.file.exists()) {
             this.file.getParentFile().mkdirs();
             if (!saveResource) {
@@ -51,11 +51,7 @@ public class MessagesConfig implements ConfigService {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-            } else if (TeleportSystem.getInstance().getResource("messages.yml") == null) {
-                TeleportSystem.getInstance().saveResource("messages.yml", true);
-            } else {
-                TeleportSystem.getInstance().saveResource("messages.yml", false);
-            }
+            } else TeleportSystem.getInstance().saveResource("messages.yml", TeleportSystem.getInstance().getResource("messages.yml") == null);
         }
         this.load();
     }

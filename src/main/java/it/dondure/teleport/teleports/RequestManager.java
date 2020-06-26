@@ -6,22 +6,22 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class RequestManager {
-    private final HashMap<EntityTargetTeleport, TypeRequest> requests;
+    private HashMap<EntityTargetTeleport, TypeRequest> requests;
 
     public RequestManager() {
         this.requests = new HashMap<EntityTargetTeleport, TypeRequest>();
     }
 
-    public void addRequest(@NonNull final EntityTargetTeleport e, final TypeRequest typeRequest) {
+    public void addRequest(@NonNull EntityTargetTeleport e, TypeRequest typeRequest) {
         this.requests.put(e, typeRequest);
     }
 
-    public void removeRequest(@NonNull final EntityTargetTeleport e) {
+    public void removeRequest(@NonNull EntityTargetTeleport e) {
         this.requests.remove(e);
     }
 
-    public boolean isPresentPlayer(final Player e) {
-        for (final EntityTargetTeleport teleport : this.requests.keySet()) {
+    public boolean isPresentPlayer(Player e) {
+        for (EntityTargetTeleport teleport : this.requests.keySet()) {
             if (teleport.getTarget().equals(e)) {
                 return true;
             }
@@ -29,17 +29,17 @@ public class RequestManager {
         return false;
     }
 
-    public void removeTotally(@NonNull final Player player) {
+    public void removeTotally(@NonNull Player player) {
         this.requests.keySet().removeIf(i -> i.getTarget().equals(player));
         this.requests.keySet().removeIf(i -> i.getFrom().equals(player));
     }
 
-    public void deleteOld(@NonNull final Player target) {
+    public void deleteOld(@NonNull Player target) {
         this.requests.keySet().removeIf(i -> i.getTarget().equals(target));
     }
 
-    public EntityTargetTeleport getEntityTargetFromPlayerFrom(@NonNull final Player from) {
-        for (final EntityTargetTeleport teleport : this.requests.keySet()) {
+    public EntityTargetTeleport getEntityTargetFromPlayerFrom(@NonNull Player from) {
+        for (EntityTargetTeleport teleport : this.requests.keySet()) {
             if (teleport.getFrom().equals(from)) {
                 return teleport;
             }
@@ -47,8 +47,8 @@ public class RequestManager {
         return null;
     }
 
-    public EntityTargetTeleport getEntityTargetFromPlayerTarget(@NonNull final Player target) {
-        for (final EntityTargetTeleport teleport : this.requests.keySet()) {
+    public EntityTargetTeleport getEntityTargetFromPlayerTarget(@NonNull Player target) {
+        for (EntityTargetTeleport teleport : this.requests.keySet()) {
             if (teleport.getTarget().equals(target)) {
                 return teleport;
             }
@@ -56,7 +56,7 @@ public class RequestManager {
         return null;
     }
 
-    public TypeRequest getTypeRequest(@NonNull final EntityTargetTeleport e) {
+    public TypeRequest getTypeRequest(@NonNull EntityTargetTeleport e) {
         return this.requests.get(e);
     }
 }

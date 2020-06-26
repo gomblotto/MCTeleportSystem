@@ -19,13 +19,13 @@ public class DenyRequestTeleportCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player p = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player p = (Player) sender;
         if (TeleportSystem.getInstance().getRequestManager().isPresentPlayer(p)) {
-            final EntityTargetTeleport targetTeleport = TeleportSystem.getInstance().getRequestManager().getEntityTargetFromPlayerTarget(p);
+            EntityTargetTeleport targetTeleport = TeleportSystem.getInstance().getRequestManager().getEntityTargetFromPlayerTarget(p);
             if (targetTeleport != null) {
-                final Player from = targetTeleport.getFrom();
-                final Player target = targetTeleport.getTarget();
+                Player from = targetTeleport.getFrom();
+                Player target = targetTeleport.getTarget();
                 from.sendMessage(MessageUtils.color(Objects.requireNonNull(this.fileConfiguration.getString("request_declined_from")).replace("%player%", target.getName())));
                 target.sendMessage(MessageUtils.color(Objects.requireNonNull(this.fileConfiguration.getString("request_declined_target"))));
             }
@@ -37,7 +37,7 @@ public class DenyRequestTeleportCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
         this.fileConfiguration = TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration();
     }
 }

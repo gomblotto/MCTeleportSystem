@@ -22,10 +22,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CommandModule implements ModuleService {
-    private final List<AbstractCommand> commands;
+    private List<AbstractCommand> commands;
 
     public CommandModule() {
-        this.commands = new ArrayList<AbstractCommand>();
+        this.commands = new ArrayList<>();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CommandModule implements ModuleService {
         this.registerCommands();
     }
 
-    private void addCommand(final AbstractCommand... commands) {
+    private void addCommand(AbstractCommand... commands) {
         this.commands.addAll(Arrays.asList(commands));
     }
 

@@ -5,8 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class EntityTargetTeleport {
-    private final Player from;
-    private final Player target;
+    private Player from;
+    private Player target;
     private Location destination;
 
     public void teleportTarget() {
@@ -29,7 +29,7 @@ public class EntityTargetTeleport {
         this.from.teleport(this.destination);
     }
 
-    public EntityTargetTeleport(final Player from, final Player target, final Location destination) {
+    public EntityTargetTeleport(Player from, Player target, Location destination) {
         this.from = from;
         this.target = target;
         this.destination = destination;
@@ -43,7 +43,7 @@ public class EntityTargetTeleport {
         return this.target;
     }
 
-    public void setDestination(final Location destination) {
+    public void setDestination(Location destination) {
         this.destination = destination;
     }
 

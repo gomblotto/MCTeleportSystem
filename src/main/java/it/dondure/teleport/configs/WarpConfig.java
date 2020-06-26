@@ -41,7 +41,7 @@ public class WarpConfig implements ConfigService {
         this.yamlConfiguration = YamlConfiguration.loadConfiguration(this.file);
     }
 
-    public void create(final boolean saveResource) {
+    public void create(boolean saveResource) {
         if (!this.file.exists()) {
             this.file.getParentFile().mkdirs();
             if (!saveResource) {

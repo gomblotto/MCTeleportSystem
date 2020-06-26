@@ -19,13 +19,13 @@ public class SetWarpCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player p = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player p = (Player) sender;
         if (args.length == 0) {
             p.sendMessage(MessageUtils.color(this.messageConfig.getString("warp_name")));
             return;
         }
-        final Warp warp = new Warp(p.getLocation(), args[0]);
+        Warp warp = new Warp(p.getLocation(), args[0]);
         if (!TeleportSystem.getInstance().getWarpManager().existsWarp(warp)) {
             TeleportSystem.getInstance().getWarpManager().addWarp(warp);
             p.sendMessage(MessageUtils.color(Objects.requireNonNull(this.messageConfig.getString("add_warp")).replace("%name%", args[0])));
@@ -36,7 +36,7 @@ public class SetWarpCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
         this.messageConfig = TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration();
     }
 }

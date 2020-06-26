@@ -34,7 +34,7 @@ public class TeleportSystem extends JavaPlugin {
     private void loadDatabase() throws ClassNotFoundException {
         (this.playerDataStorage = new PlayerDataStorage(this.configManager.getHomeSQL().getFile().getAbsolutePath())).openConnection();
         this.playerDataStorage.createNewTable();
-        for (final Home homes : this.playerDataStorage.allHomes()) {
+        for (Home homes : this.playerDataStorage.allHomes()) {
             this.getHomeManager().addHome(homes);
         }
     }

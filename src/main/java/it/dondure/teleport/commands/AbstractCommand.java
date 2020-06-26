@@ -8,11 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public abstract class AbstractCommand implements CommandExecutor {
-    private final String commandName;
-    private final String permission;
-    private final boolean canConsoleUse;
+    private String commandName;
+    private String permission;
+    private boolean canConsoleUse;
 
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String str, final String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
         if (!cmd.getLabel().equalsIgnoreCase(this.commandName)) {
             return true;
         }
@@ -28,11 +28,11 @@ public abstract class AbstractCommand implements CommandExecutor {
         return true;
     }
 
-    public abstract void execute(final CommandSender p0, final String[] p1);
+    public abstract void execute(CommandSender p0, String[] p1);
 
     public abstract void register();
 
-    public AbstractCommand(final String commandName, final String permission, final boolean canConsoleUse) {
+    public AbstractCommand(String commandName, String permission, boolean canConsoleUse) {
         this.commandName = commandName;
         this.permission = permission;
         this.canConsoleUse = canConsoleUse;

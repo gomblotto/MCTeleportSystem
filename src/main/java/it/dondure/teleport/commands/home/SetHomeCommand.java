@@ -16,9 +16,9 @@ public class SetHomeCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
+    public void execute(CommandSender sender, String[] args) {
         if (args.length == 0) {
-            final Player p = (Player) sender;
+            Player p = (Player) sender;
             p.sendMessage(MessageUtils.color(TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration().getString("set_home")));
             if (TeleportSystem.getInstance().getHomeManager().getHomeFromPlayer(p) != null) {
                 TeleportSystem.getInstance().getHomeManager().removeHome(TeleportSystem.getInstance().getHomeManager().getHomeFromPlayer(p));
@@ -29,6 +29,6 @@ public class SetHomeCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
     }
 }

@@ -9,6 +9,6 @@ import org.bukkit.plugin.Plugin;
 public class ListenerModule implements ModuleService {
     @Override
     public void init() {
-        Bukkit.getServer().getPluginManager().registerEvents((Listener) new QuitEvent(), (Plugin) TeleportSystem.getInstance());
+        Bukkit.getServer().getPluginManager().registerEvents(new QuitEvent(), TeleportSystem.getInstance());
     }
 }

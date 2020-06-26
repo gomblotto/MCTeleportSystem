@@ -11,7 +11,7 @@ public class HomeModule implements ModuleService {
     @Override
     public void init() {
         this.homeManager = new HomeManager();
-        new StorageHome().runTaskTimerAsynchronously((Plugin) TeleportSystem.getInstance(), 1200L, 1200L);
+        new StorageHome().runTaskTimerAsynchronously(TeleportSystem.getInstance(), 1200L, 1200L);
     }
 
     public HomeManager getHomeManager() {

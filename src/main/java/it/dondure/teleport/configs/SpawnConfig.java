@@ -42,7 +42,7 @@ public class SpawnConfig implements ConfigService {
         this.yamlConfiguration = YamlConfiguration.loadConfiguration(this.file);
     }
 
-    public void create(final boolean saveResource) {
+    public void create(boolean saveResource) {
         if (!this.file.exists()) {
             this.file.getParentFile().mkdirs();
             if (!saveResource) {
@@ -58,13 +58,13 @@ public class SpawnConfig implements ConfigService {
         this.load();
     }
 
-    public void setSpawn(final String world, final double x, final double y, final double z, final float yaw, final float pitch) {
-        this.yamlConfiguration.set("spawn.world", (Object) world);
-        this.yamlConfiguration.set("spawn.x", (Object) x);
-        this.yamlConfiguration.set("spawn.y", (Object) y);
-        this.yamlConfiguration.set("spawn.z", (Object) z);
-        this.yamlConfiguration.set("spawn.yaw", (Object) yaw);
-        this.yamlConfiguration.set("spawn.pitch", (Object) pitch);
+    public void setSpawn(String world, double x, double y, double z, float yaw, float pitch) {
+        this.yamlConfiguration.set("spawn.world", world);
+        this.yamlConfiguration.set("spawn.x", x);
+        this.yamlConfiguration.set("spawn.y", y);
+        this.yamlConfiguration.set("spawn.z", z);
+        this.yamlConfiguration.set("spawn.yaw", yaw);
+        this.yamlConfiguration.set("spawn.pitch", pitch);
         this.saveConfig();
     }
 

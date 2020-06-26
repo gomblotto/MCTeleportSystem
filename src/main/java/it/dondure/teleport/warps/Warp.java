@@ -4,19 +4,19 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Warp {
-    private final Location warp;
-    private final String name;
+    private Location warp;
+    private String name;
 
     @Override
     public String toString() {
         return this.name;
     }
 
-    public void teleportPlayer(final Player player) {
+    public void teleportPlayer(Player player) {
         player.teleport(this.warp);
     }
 
-    public Warp(final Location warp, final String name) {
+    public Warp(Location warp, String name) {
         this.warp = warp;
         this.name = name;
     }

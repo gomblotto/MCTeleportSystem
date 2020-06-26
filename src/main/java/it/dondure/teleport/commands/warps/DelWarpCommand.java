@@ -19,8 +19,8 @@ public class DelWarpCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(final CommandSender sender, final String[] args) {
-        final Player p = (Player) sender;
+    public void execute(CommandSender sender, String[] args) {
+        Player p = (Player) sender;
         if (args.length == 0) {
             p.sendMessage(MessageUtils.color(this.messageConfig.getString("warp_name")));
             return;
@@ -33,7 +33,7 @@ public class DelWarpCommand extends AbstractCommand {
 
     @Override
     public void register() {
-        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor((CommandExecutor) this);
+        Objects.requireNonNull(TeleportSystem.getInstance().getCommand(this.getCommandName())).setExecutor(this);
         this.messageConfig = TeleportSystem.getInstance().getConfigManager().getMessagesConfig().getYamlConfiguration();
     }
 }

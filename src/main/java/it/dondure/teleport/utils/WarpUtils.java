@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 import java.util.List;
 
 public class WarpUtils {
-    public static Warp getWarpFromName(final List<Warp> warps, final String s) {
-        for (final Warp warpa : warps) {
+    public static Warp getWarpFromName(List<Warp> warps, String s) {
+        for (Warp warpa : warps) {
             if (warpa.toString().equals(s)) {
                 return warpa;
             }
@@ -15,8 +15,8 @@ public class WarpUtils {
         return null;
     }
 
-    public static void sendWarpMessage(final String nowarpview, final String nowarp, final String join, final List<Warp> warps, final Player player) {
-        final StringBuilder sb = new StringBuilder();
+    public static void sendWarpMessage(String nowarpview, String nowarp, String join, List<Warp> warps, Player player) {
+        StringBuilder sb = new StringBuilder();
         sb.append(join);
         if (warps.size() == 0) {
             player.sendMessage(nowarp);

@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class WarpManager {
-    private final FileConfiguration fileConfiguration;
-    private final WarpConfig warpConfig;
-    private final List<Warp> warps;
+    private FileConfiguration fileConfiguration;
+    private WarpConfig warpConfig;
+    private List<Warp> warps;
 
     public WarpManager() {
         this.warps = new ArrayList<Warp>();
@@ -28,8 +28,8 @@ public class WarpManager {
             this.fileConfiguration.createSection("warps");
             return;
         }
-        for (final String namewarp : this.fileConfiguration.getConfigurationSection("warps").getKeys(false)) {
-            final Map<String, Object> map = (Map<String, Object>) Objects.requireNonNull(this.fileConfiguration.getConfigurationSection("warps")).getConfigurationSection(namewarp).getValues(true);
+        for (String namewarp : this.fileConfiguration.getConfigurationSection("warps").getKeys(false)) {
+            Map<String, Object> map = (Map<String, Object>) Objects.requireNonNull(this.fileConfiguration.getConfigurationSection("warps")).getConfigurationSection(namewarp).getValues(true);
             if (map.get("world") != null) {
                 if (Bukkit.getWorlds().contains(Bukkit.getWorld(String.valueOf(map.get("world"))))) {
                     this.warps.add(new Warp(new Location(Bukkit.getWorld(String.valueOf(map.get("world"))), (double) map.get("x"), (double) map.get("y"), (double) map.get("z"), Float.parseFloat(String.valueOf(map.get("yaw"))), Float.parseFloat(String.valueOf(map.get("pitch")))), namewarp));
@@ -40,9 +40,9 @@ public class WarpManager {
         }
     }
 
-    public void addWarp(final Warp warp) {
+    public void addWarp(Warp warp) {
         this.warps.add(warp);
-        final ConfigurationSection section = this.fileConfiguration.getConfigurationSection("warps");
+        ConfigurationSection section = this.fileConfiguration.getConfigurationSection("warps");
         if (section != null && section.getConfigurationSection(warp.getName()) == null) {
             section.createSection(warp.getName());
         }
@@ -61,12 +61,12 @@ public class WarpManager {
         this.warpConfig.saveConfig();
     }
 
-    public void deleteWarp(final Warp warp) {
+    public void deleteWarp(Warp warp) {
         this.warps.remove(warp);
-        final ConfigurationSection section = this.fileConfiguration.getConfigurationSection("warps");
+        ConfigurationSection section = this.fileConfiguration.getConfigurationSection("warps");
         if (section != null && section.getConfigurationSection(warp.getName()) != null) {
-            final Map<String, Object> configValues = (Map<String, Object>) Objects.requireNonNull(section.getConfigurationSection(warp.getName())).getValues(false);
-            for (final Map.Entry<String, Object> entry : configValues.entrySet()) {
+            Map<String, Object> configValues = (Map<String, Object>) Objects.requireNonNull(section.getConfigurationSection(warp.getName())).getValues(false);
+            for (Map.Entry<String, Object> entry : configValues.entrySet()) {
                 Objects.requireNonNull(section.getConfigurationSection(warp.getName())).set((String) entry.getKey(), (Object) null);
             }
             section.set(warp.getName(), (Object) null);
@@ -74,7 +74,7 @@ public class WarpManager {
         }
     }
 
-    public boolean existsWarp(final Warp warp) {
+    public boolean existsWarp(Warp warp) {
         return this.warps.contains(warp);
     }
 
